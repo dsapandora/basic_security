@@ -39,14 +39,13 @@ def _take_movie(cap):
     #out.release()
 
 def send_email_image(camera):
-    sg = sendgrid.SendGridClient('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')
+    sg = sendgrid.SendGridClient('<sengrid api key>')
     message = sendgrid.Mail()
-    message.add_to('Martha Ruiz <estephany0913@hotmail.com>')
-    message.add_to('Ariel Vernaza <ariel.darkserver@gmail.com>')
+    message.add_to('<to_email>')
     message.set_subject('SOSPECHOSOS EN LA PUERTA IMAGENES')
     #message.set_html('Body')
     message.set_text('Esta persona esta fuera de la casa')
-    message.set_from('Ariel Vernaza <ariel.vernaza@dsalab.com>')
+    message.set_from('<from email>')
     _take_picture(camera,"1.png")
     message.add_attachment('sospechoso.png', '/root/1.png')
     _take_picture(camera, "2.png")
@@ -58,14 +57,13 @@ def send_email_image(camera):
 
 
 def send_email_movie(camera):
-    sg = sendgrid.SendGridClient('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')
+    sg = sendgrid.SendGridClient('<sengrid api key>')
     message = sendgrid.Mail()
-    message.add_to('Martha Ruiz <estephany0913@hotmail.com>')
-    message.add_to('Ariel Vernaza <ariel.darkserver@gmail.com>')
+    message.add_to('<to email>')
     message.set_subject('SOSPECHOSOS EN LA PUERTA VIDEO')
     #message.set_html('Body')
     message.set_text('Esta persona esta fuera de la casa')
-    message.set_from('Ariel Vernaza <ariel.vernaza@dsalab.com>')
+    message.set_from('<From email>')
     _take_movie(camera)
     message.add_attachment('video.avi', '/root/output.avi')
     status, msg = sg.send(message)
